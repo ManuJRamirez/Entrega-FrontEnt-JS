@@ -44,14 +44,14 @@ export const sparrestApi = () => {
       }
     }
   };
-  const createAcc = async (endpoint) => {
+  const createAcc = async (endpoint, data) => {
     const url = baseUrl + endpoint;
 
     let response;
     try {
       response = await fetch(url, {
         method: "POST",
-        body: JSON.stringify(body),
+        body: JSON.stringify(data),
         headers: {
           'Content-type': 'application/json',
         }

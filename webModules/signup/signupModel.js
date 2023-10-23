@@ -1,9 +1,12 @@
+import { sparrestApi } from "../tools/sparrestApi.js";
+
 export const createrAccount = async (email, password) => {
-    const url = "auth/register";
+    const endpoint = "auth/register";
 
     const data = {
-        usermail : email,
+        username : email,
         password : password,
     }
-    
+
+    await sparrestApi().createAcc(endpoint,data);
 }
