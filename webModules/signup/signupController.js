@@ -1,3 +1,4 @@
+import { printEvent } from "../tools/printEvent.js";
 import { createrAccount } from "./signupModel.js";
 
 
@@ -15,9 +16,12 @@ const dataChecking = async ( event , signupData ) => {
     try {
         if(isDataOk( email, password, passwordConfirmation )){
             await createrAccount( email.value, password.value );
+            printEvent('accountCreated', {notificationType: 'success', message: "Cuenta registrada correctamente"}, signupData);
+            setTimeout(() =>
+            window.location = '../index.html',  3000);
         }
     } catch (error) {
-        throw error; 
+        printEvent('accountCreated', {notificationType: 'error', message: error}, signupData);
     }
 };
 
