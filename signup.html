@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WayPoP</title>
     <link rel="stylesheet" href="./webModules/tools/notifications/style.css">
+    <link rel="stylesheet" href="./webModules/tools/loader/style.css">
 
     <script type="module" src="./webModules/signup/index.js"></script>
 </head>
 <body>
+    <span class="loader"></span>
     <section id="notification" ></section>
     <form id="signup">
         <label for="email">Email:</label>
@@ -23,8 +25,7 @@
         <input type="password" id="passwordConfirmation" required minlength="6"/>
         <br />
         
-        <button type="submit">Crear usuario</button>
+        <button id="signupButton"  type="submit">Crear usuario</button>
         </form>
-    
 </body>
 </html>

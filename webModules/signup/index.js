@@ -8,6 +8,7 @@ const notificationSection = document.querySelector("#notification")
 const printNotification = notificationController(notificationSection);
 
 signupData.addEventListener('accountCreated', (event) =>{
+    
     printNotification(event.detail.notificationType, event.detail.message)
     
     const closeNotificationByButton = document.querySelector("#close")

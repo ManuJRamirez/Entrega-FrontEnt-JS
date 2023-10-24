@@ -3,7 +3,13 @@ import { createrAccount } from "./signupModel.js";
 
 
 export const signupController = ( signupData ) =>{
-    signupData.addEventListener("submit", (event) => dataChecking(event, signupData));
+    const signupButton = document.getElementById("signupButton");
+    
+    signupData.addEventListener("submit", (event) => {
+        
+        signupButton.disabled = true;
+        dataChecking(event, signupData);    
+    });
 }
 
 const dataChecking = async ( event , signupData ) => {
@@ -22,6 +28,7 @@ const dataChecking = async ( event , signupData ) => {
         }
     } catch (error) {
         printEvent('accountCreated', {notificationType: 'error', message: error}, signupData);
+        signupButton.disabled = false;
     }
 };
 
