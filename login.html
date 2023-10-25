@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./webModules/tools/loader/style.css">
+    <link rel="stylesheet" href="./webModules/tools/notifications/style.css">
+  </head>
+  <body>
+    <section id="loader"></section>
+    <section id="notification"></section>
+    <form id="login">
+      <label for="email">email: </label>
+      <input type="email" id="email" name="email" required />
+      <br />
+
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" name="password" required minlength="8"/>
+    <button type="submit">Login</button>
+    </form>
+    <script type="module" src="./webModules/login/index.js"></script>
+  </body>
+</html>
