@@ -1,6 +1,6 @@
 import { loaderCreator } from "./loaderView.js"
 
-export const loaderControler = () => {
+export const loaderController = () => {
     const printLoader = () => {
         loader.classList.add('active');
         loader.innerHTML = loaderCreator();

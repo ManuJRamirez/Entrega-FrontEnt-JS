@@ -1,12 +1,13 @@
-import { loaderControler } from "../tools/loader/loaderController.js";
+import { loaderController } from "../tools/loader/loaderController.js";
 import { notificationController } from "../tools/notifications/notificationsController.js";
 import { signupController } from "./signupController.js";
 
 
-const signupData = document.querySelector("#signup");
-const notificationSection = document.querySelector("#notification")
+const signupData = document.querySelector('#signup');
+const notificationSection = document.querySelector('#notification')
+const loaderSection = document.querySelector('#loader')
 const printNotification = notificationController(notificationSection);
-const { printLoader, hideLoader } = loaderControler(loader);
+const { printLoader, hideLoader } = loaderController(loaderSection);
 
 document.addEventListener('DOMContentLoaded', () => {
 
