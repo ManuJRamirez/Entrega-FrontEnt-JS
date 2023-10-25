@@ -71,9 +71,38 @@ export const sparrestApi = () => {
     }
   }
 
+  const loginAcc = async (endpoint, data) => {
+    const url = baseUrl + endpoint;
+    let response;
+
+    try {
+      response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      if (response.ok){
+        return data.accessToken;
+      }
+    } catch (error) {
+      if (error.message){
+        throw error.message;
+      } else {
+        throw error;
+      }  
+    }
+  };
+
   return {
     get: get,
     delete: remove,
     createAcc: createAcc, 
+    loginAcc: loginAcc,
   }
 }
