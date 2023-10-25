@@ -21,6 +21,7 @@ const dataChecking = async ( event , signupData ) => {
 
     try {
         if(isDataOk( email, password, passwordConfirmation )){
+            printEvent('printLoadSignup', null, signupData);
             await createrAccount( email.value, password.value );
             printEvent('accountCreated', {notificationType: 'success', message: "Cuenta registrada correctamente"}, signupData);
             setTimeout(() =>
@@ -29,6 +30,8 @@ const dataChecking = async ( event , signupData ) => {
     } catch (error) {
         printEvent('accountCreated', {notificationType: 'error', message: error}, signupData);
         signupButton.disabled = false;
+    } finally {
+        printEvent('hideLoadSignup', null, signupData);
     }
 };
 
