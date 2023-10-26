@@ -71,18 +71,20 @@ export const sparrestApi = () => {
     }
   }
 
-  const loginAcc = async (endpoint, data) => {
+  const loginAcc = async (endpoint, body) => {
     const url = baseUrl + endpoint;
     let response;
 
     try {
       response = await fetch(url, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(body),
         headers: {
           'Content-type': 'application/json'
         }
       });
+
+      const data = await response.json();
       
       if (!response.ok) {
         throw new Error(data.message);

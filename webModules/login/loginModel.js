@@ -8,5 +8,5 @@ export const loginAccount = async ( email, password ) => {
         password: password,
     }
 
-    await sparrestApi().loginAcc(endpoint, data)
+    return await sparrestApi().loginAcc(endpoint, data)
 }
