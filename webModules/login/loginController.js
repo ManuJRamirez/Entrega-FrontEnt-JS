@@ -29,12 +29,12 @@ const submitLogin = async (event, loginFormData) => {
         printEvent('printLoadLogin', null, loginFormData);
         const jsonWebToken = await loginAccount(email, password);
         localStorage.setItem('token', jsonWebToken);
-        printEvent('loginOK', {notificationType: "success", message: "Te has conectado correctamente"}, loginFormData)
+        printEvent('loginNotification', {notificationType: "success", message: "Te has conectado correctamente"}, loginFormData)
         setTimeout(() =>{
             window.location = './index.html';
         }, 2000);
     } catch (error) {
-        printEvent('errorLogin', {notificationType: "error", message: "Error al intentar conectar. Pruebe de nuevo"}, loginFormData)
+        printEvent('loginNotification', {notificationType: "error", message: "Error al intentar conectar. Pruebe de nuevo"}, loginFormData)
         loginButton.disabled = false;
     } finally{
         printEvent('hideLoadLogin', null, loginFormData)

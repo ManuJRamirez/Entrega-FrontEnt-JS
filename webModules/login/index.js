@@ -9,21 +9,13 @@ const notificationSection = document.querySelector('#notification');
 const printNotification = notificationController(notificationSection);
 document.addEventListener('DOMContentLoaded', () => {
    
-    loginFormData.addEventListener('loginOK', (event) =>{
+    loginFormData.addEventListener('loginNotification', (event) =>{
         printNotification(event.detail.notificationType, event.detail.message);
         const closeNotificationByButton = document.querySelector('#close');
         closeNotificationByButton.addEventListener('click', () => {
             notificationSection.innerHTML = '';
         })
     });
-
-    loginFormData.addEventListener('errorLogin', (event) =>{
-        printNotification(event.detail.notificationType, event.detail.message);
-        const closeNotificationByButton = document.querySelector('#close');
-        closeNotificationByButton.addEventListener('click', () => {
-            notificationSection.innerHTML = '';
-        })
-    })
 
     loginFormData.addEventListener('printLoadLogin', () => {
         printLoader();
