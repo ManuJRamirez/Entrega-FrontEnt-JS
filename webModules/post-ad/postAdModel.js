@@ -1,7 +1,9 @@
 import { sparrestApi } from "../tools/sparrestApi.js";
 
-export const postAd = async (formData) => {
+export const postAd = async (formData, image) => {
     const endpoint = "api/commercial"
+    const imageUrl = await loadImg(image);
+
     const dateNow = new Date();
     const date = dateNow.toString();
 
@@ -10,9 +12,34 @@ export const postAd = async (formData) => {
         price: formData.get("price"),
         opType: formData.get("operationType"),
         description: formData.get("description"),
-        date: date
-        //photo: formData.get("file")
+        date: date,
+    };
+
+    if(imageUrl) {
+        body.image =imageUrl;
+    } else {
+        body.image = "noImage";
     }
+
+    console.log(body);
 
     await sparrestApi().createAd(endpoint,body);
 };
+
+const loadImg = async (image) => {
+    let imageUrl;
+  
+    try {
+      const uploadManager = new Bytescale.UploadManager({
+        apiKey: "public_FW25biuB7FCTi4QPc78WebD9jExu"
+      });
+    
+      const { fileUrl } = await uploadManager.upload({ data: image });
+      
+      imageUrl = fileUrl;
+    } catch (error) {
+      imageUrl = null;
+    }
+  
+    return imageUrl;
+  }

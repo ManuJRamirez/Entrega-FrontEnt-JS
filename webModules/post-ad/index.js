@@ -12,7 +12,6 @@ if(!token) {
 document.addEventListener('DOMContentLoaded', () => {
 
     const adCreation = document.querySelector('#adForm');
-    console.log(adCreation);
     const notificationSection = document.querySelector('#notification');
     const loaderSection = document.querySelector('#loader');
     const { printLoader, hideLoader} = loaderController(loaderSection);

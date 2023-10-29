@@ -8,11 +8,11 @@ export const postAdController = (adForm) =>{
         event.preventDefault();
 
         const formData = new FormData(adForm);
-        console.log(formData);
+        const fileInput = adForm.querySelector('#image');
 
         try {
             printEvent('adCreationPrintLoader', null, adForm);
-            await postAd(formData);
+            await postAd(formData, fileInput.files[0]);
             printEvent('adCreation', {notificationType: 'success', message:'¡Felicidades!¡Anuncio creado correctamente'}, adForm);
             setTimeout(() => {
                 window.location = "../index.html"
@@ -24,4 +24,5 @@ export const postAdController = (adForm) =>{
             printEvent('adCreationHideLoader', null, adForm);
         }
     });
+    
 };
