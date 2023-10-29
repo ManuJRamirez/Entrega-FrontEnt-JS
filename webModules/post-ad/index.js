@@ -1,6 +1,7 @@
 import { loaderController } from "../tools/loader/loaderController.js";
 import { notificationController } from "../tools/notifications/notificationsController.js" 
 import { postAdController } from "./postAdController.js";
+import { closeByButtonController } from "../tools/notifications/closeByButton.js"
 
 const token = localStorage.getItem('token');
 
@@ -21,10 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     adCreation.addEventListener('adCreation', (event) =>{
         printNotification(event.detail.notificationType, event.detail.message);
-        const closeNotificationByButton = document.querySelector('#close');
-        closeNotificationByButton.addEventListener('click', () => {
-            notification.innerHTML = '';
-        })
+        closeByButtonController(notificationSection);
     });
     
     adCreation.addEventListener('adCreationPrintLoader', () =>{

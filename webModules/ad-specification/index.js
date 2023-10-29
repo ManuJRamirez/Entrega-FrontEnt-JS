@@ -1,6 +1,7 @@
 import { loaderController } from "../tools/loader/loaderController.js"
 import { notificationController } from "../tools/notifications/notificationsController.js"
 import { adSpecificationController } from "./adSpecificationController.js";
+import { closeByButtonController } from "../tools/notifications/closeByButton.js"
 
 document.addEventListener('DOMContentLoaded', () => {
 

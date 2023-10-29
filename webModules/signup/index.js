@@ -1,6 +1,7 @@
 import { loaderController } from "../tools/loader/loaderController.js";
 import { notificationController } from "../tools/notifications/notificationsController.js";
 import { signupController } from "./signupController.js";
+import { closeByButtonController } from "../tools/notifications/closeByButton.js"
 
 
 const signupData = document.querySelector('#signup');
