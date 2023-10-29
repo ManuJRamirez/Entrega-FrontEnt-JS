@@ -1,6 +1,7 @@
 import { loginController } from "./loginController.js";
 import { loaderController } from "../tools/loader/loaderController.js"
 import { notificationController } from "../tools/notifications/notificationsController.js"
+import { closeByButtonController } from "../tools/notifications/closeByButton.js";
 
 const loginFormData = document.querySelector('#login');
 const loaderSection = document.querySelector('#loader');
@@ -11,10 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
     loginFormData.addEventListener('loginNotification', (event) =>{
         printNotification(event.detail.notificationType, event.detail.message);
-        const closeNotificationByButton = document.querySelector('#close');
-        closeNotificationByButton.addEventListener('click', () => {
-            notificationSection.innerHTML = '';
-        })
+        closeByButtonController(notificationSection);
     });
 
     loginFormData.addEventListener('printLoadLogin', () => {

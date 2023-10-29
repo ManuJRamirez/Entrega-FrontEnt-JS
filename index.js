@@ -15,10 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     adList.addEventListener('advertListLoaded', (event) =>{
         printNotification(event.detail.notificationType, event.detail.message)
-        const closeNotificationByButton = document.querySelector("#close")
-        closeNotificationByButton.addEventListener('click', () => {
-            notificationSection.innerHTML = '';
-        });
+        closeByButtonController(notificationSection);
     });
     
     adList.addEventListener('loadingListAdvs', () => {

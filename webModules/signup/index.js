@@ -13,10 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     signupData.addEventListener('accountCreated', (event) =>{
         printNotification(event.detail.notificationType, event.detail.message)
-        const closeNotificationByButton = document.querySelector("#close")
-        closeNotificationByButton.addEventListener('click', () => {
-            notificationSection.innerHTML = '';
-        });
+        closeByButtonController(notificationSection);
     });
 
     signupData.addEventListener('printLoadSignup', () =>{

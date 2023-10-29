@@ -1,7 +1,7 @@
 import { sparrestApi } from "../tools/sparrestApi.js";
 
 export const getOneAd = async (adId) => {
-    const endpoint = `api/commercial/${adId}?expand=user`;
+    const endpoint = `api/commercial/${adId}?_expand=user`;
 
     return await sparrestApi().get(endpoint);
 }
