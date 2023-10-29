@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         printNotification(event.detail.notificationType, event.detail.message)
         closeByButtonController(notificationSection);
     });
+
+    adList.addEventListener('adListEmpty', (event) =>{
+        printNotification(event.detail.notificationType, event.detail.message)
+        closeByButtonController(notificationSection);
+    });
     
     adList.addEventListener('loadingListAdvs', () => {
         printLoader();

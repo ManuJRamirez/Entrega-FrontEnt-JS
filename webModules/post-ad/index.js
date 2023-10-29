@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const adCreation = document.querySelector('#adForm');
     console.log(adCreation);
-    const notification = document.querySelector('#notification');
+    const notificationSection = document.querySelector('#notification');
     const loaderSection = document.querySelector('#loader');
     const { printLoader, hideLoader} = loaderController(loaderSection);
 
-    const printNotification = notificationController(notification);
+    const printNotification = notificationController(notificationSection);
 
 
     adCreation.addEventListener('adCreation', (event) =>{

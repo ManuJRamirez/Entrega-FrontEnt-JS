@@ -17,6 +17,7 @@ export const adListController = async(adList) => {
 
     if(adverts.length === 0) {
         adList.innerHTML = emptyAdListTemplate();
+        printEvent('adListEmpty', {notificationType: 'success', message: "No hay anuncios para mostrar"}, adList);
     } else {
         printAdList(adverts, adList);
     }

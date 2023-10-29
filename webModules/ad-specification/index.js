@@ -18,15 +18,27 @@ document.addEventListener('DOMContentLoaded', () => {
     adInfoSection.addEventListener('oneAdLoading', () => {
         printLoader();
     });
+    
+    adInfoSection.addEventListener('oneAdDeleteLoading', () => {
+        printLoader();
+    })
 
     adInfoSection.addEventListener('oneAdLoadingOver', () => {
         hideLoader();
     });
 
+    adInfoSection.addEventListener('oneAdDeleteLoadingOver', () => {
+        hideLoader();
+    })
+
     adInfoSection.addEventListener('oneAdNotification', (event) => {
         printNotification(event.detail.notificationType, event.detail.message);
         closeByButtonController(notificationSection);
     });
+    adInfoSection.addEventListener('oneAdDeleted', (event) => {
+        printNotification(event.detail.notificationType, event.detail.message);
+        closeByButtonController(notificationSection);
+    })
 
     adSpecificationController(adInfoSection, adId);
 });

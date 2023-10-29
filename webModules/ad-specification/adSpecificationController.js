@@ -19,16 +19,29 @@ export const adSpecificationController = async (adInfoSection, adId) => {
 };
 
 const showDeleteAdButton = (ad , adInfoSection) => {
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Borrar Anuncio';
-
-    deleteButton.addEventListener('click', async () => {
-        if(confirm('¿Seguro que quieres eliminar el anuncio?')) {
-            await deleteOneAd(ad.id);
-            window.location = 'index.html';
-        }
-    });
-    adInfoSection.appendChild(deleteButton);
+    
+    try {
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Borrar Anuncio';
+    
+        deleteButton.addEventListener('click', async () => {
+            printEvent('oneAdDeleteLoading', null, adInfoSection);
+            if(confirm('¿Seguro que quieres eliminar el anuncio?')) {
+                await deleteOneAd(ad.id);
+                printEvent('oneAdDeleted', {notificationType: 'success', message: '¡Anuncio eliminado correctamente!'}, adInfoSection);
+                setTimeout(() =>{
+                window.location = 'index.html';
+                }, 2000);
+            }
+            printEvent('oneAdDeleteLoadingOver', null, adInfoSection);
+        });
+        adInfoSection.appendChild(deleteButton);
+        
+    } catch (error) {
+        printEvent('oneAdDeleted', {notificationType:'error', message: '¡El anuncio no ha podido ser eliminado! ¡Inténtelo mas tarde, por favor!'});
+    } finally {
+        printEvent('oneAdDeleteLoadingOver', null, adInfoSection);
+    }
 };
 
 const userDeleteAuthorization = (ad, adInfoSection) => {
