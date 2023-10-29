@@ -37,3 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     adListController(adList);
 })
+
+window.addEventListener('offline', () =>{
+    printNotification('error', 'Se ha perdido la conexión');
+});
