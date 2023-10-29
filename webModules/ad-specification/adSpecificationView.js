@@ -1,4 +1,4 @@
-export const adTemplate = (ad, user) => {
+export const adTemplate = (ad) => {
     
     let template = ``;
 

@@ -128,14 +128,40 @@ export const sparrestApi = () => {
       }
     }
   }
-
+    const updateAd = async (endpoint, body) => {
+      const url = baseUrl + endpoint;
+      const token = localStorage.getItem('token');
+      let response; 
   
-
+      try {
+        response = await fetch(url, {
+          method: "PUT",
+          body: JSON.stringify(body),
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+  
+        if (!response.ok){
+          const data = await response.json();
+          throw new Error(data.message);
+        }
+      } catch (error) {
+        if (error.message){
+          throw error.message;
+        } else {
+          throw error; 
+        }
+      }
+    }
+    
   return {
     get: get,
     delete: remove,
     createAcc: createAcc, 
     loginAcc: loginAcc,
     createAd: createAd,
+    updateAd: updateAd,
   }
 }

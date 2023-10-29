@@ -22,9 +22,7 @@ const showDeleteAdButton = (ad , adInfoSection) => {
     
     try {
         const deleteButton = document.createElement('button');
-        const editButton = document.createElement('button');
         deleteButton.textContent = 'Borrar Anuncio';
-        editButton.textContent = 'Editar Anuncio';
         
         deleteButton.addEventListener('click', async () => {
             printEvent('oneAdDeleteLoading', null, adInfoSection);
@@ -51,12 +49,44 @@ const showDeleteAdButton = (ad , adInfoSection) => {
 
 const userDeleteAuthorization = (ad, adInfoSection) => {
     const token = localStorage.getItem('token');
-
+    
     if (token) {
         const { userId } = decodeToken(token);
-
+        
         if (userId === ad.userId) {
             showDeleteAdButton(ad, adInfoSection);
+            printEditAdButton(ad, adInfoSection);
         }
     }
 };
+
+
+const printEditAdButton = (ad, adInfoSection) => {
+    try {
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar Anuncio';
+
+        editButton.addEventListener('click', async() => {
+            const adInfo = await getOneAd(ad.id);
+            const bodyId = {
+                id: adInfo.id
+            }
+            const body = {
+                name: adInfo.name,
+                price: adInfo.price,
+                opType: adInfo.opType,
+                description: adInfo.description
+            };
+
+            window.localStorage.setItem('adId', JSON.stringify(bodyId));
+            window.localStorage.setItem('infoAd', JSON.stringify(body));
+            window.location = 'post-ad.html';
+
+        });
+
+        adInfoSection.appendChild(editButton);
+        
+    } catch (error) {
+        
+    }
+}
