@@ -2,7 +2,7 @@ import { sessionController } from "./webModules/session/sessionController.js";
 import { adListController } from "./webModules/ad-list/adListController.js";
 import { notificationController } from "./webModules/tools/notifications/notificationsController.js";
 import { loaderController } from "./webModules/tools/loader/loaderController.js";
-import { closeByButtonController } from "../tools/notifications/closeByButton.js"
+import { closeByButtonController } from "./webModules/tools/notifications/closeByButton.js"
 
 const sessionNav = document.getElementById('session');
 const adList = document.getElementById('advertisement');
