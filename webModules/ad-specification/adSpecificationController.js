@@ -22,7 +22,9 @@ const showDeleteAdButton = (ad , adInfoSection) => {
     
     try {
         const deleteButton = document.createElement('button');
+        const editButton = document.createElement('button');
         deleteButton.textContent = 'Borrar Anuncio';
+        editButton.textContent = 'Editar Anuncio';
         
         deleteButton.addEventListener('click', async () => {
             printEvent('oneAdDeleteLoading', null, adInfoSection);
@@ -32,7 +34,7 @@ const showDeleteAdButton = (ad , adInfoSection) => {
                 printEvent('oneAdDeleted', {notificationType: 'success', message: '¡Anuncio eliminado correctamente!'}, adInfoSection);
                 setTimeout(() =>{
                     window.location = 'index.html';
-                }, 2000);
+                }, 3000);
             } else {
                 deleteButton.disabled = false;
             }

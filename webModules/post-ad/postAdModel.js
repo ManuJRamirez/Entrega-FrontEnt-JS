@@ -21,8 +21,6 @@ export const postAd = async (formData, image) => {
         body.image = "noImage";
     }
 
-    console.log(body);
-
     await sparrestApi().createAd(endpoint,body);
 };
 
